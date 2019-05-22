@@ -6,7 +6,7 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 /**
  * @title CappedBurnableToken
- * @dev Mintable token with a token cap which also supports burning (lowers the cap)
+ * @dev Mintable token with a token cap which also supports burning
  * This contract encapsulates the functionality of ERC20Mintable, ERC20Capped and ERC20Burnable
  * With minor modifications
  */

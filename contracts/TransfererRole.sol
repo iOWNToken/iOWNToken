@@ -5,6 +5,8 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 /**
  * @dev A Role allowed to transfer tokens before token is released
+ * Intended for restricting the token (if needed) such that owner can provide explicit permission to transfer tokens
+ * While generic transfer is blocked intil the token is official released
  */
 contract TransfererRole is Ownable {
     using Roles for Roles.Role;

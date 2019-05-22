@@ -52,9 +52,9 @@ contract UpgradeableToken is CappedBurnableToken, ERC20Pausable, Ownable  {
         //Burn user's tokens:
         burn(amount);
         _totalUpgraded = _totalUpgraded.add(amount);
-        emit Upgrade(msg.sender, _upgradeAgent, amount);
         // Upgrade agent reissues the tokens in the new contract
         UpgradeAgent(_upgradeAgent).upgradeFrom(msg.sender, amount);
+        emit Upgrade(msg.sender, _upgradeAgent, amount);        
     }
 
     /**
@@ -67,7 +67,7 @@ contract UpgradeableToken is CappedBurnableToken, ERC20Pausable, Ownable  {
         // Basic validation for target contract
         require(upgradeAgent.isUpgradeAgent() == true, "Address provided is an invalid agent");
         require(upgradeAgent.originalSupply() == cap(), "Upgrade agent should have the same supply");
-        emit UpgradeAgentSet(agent);
         _upgradeAgent = agent;
+        emit UpgradeAgentSet(agent);        
     }
 }

@@ -33,12 +33,8 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
     /** Occurs when owner updates the address of the iOWN Treasury */
     event TreasuryReconfigured(address newTreasury);
 
-    /**
-     * @dev Modifier for checking whether we have released the token
-     */
-    modifier transferable() {
-        require(_released == true || isTransferer(msg.sender), "Token not transferable yet");
-        _;
+    modifier whenNotReleased() {
+        require(_released == false, "Token is already released");
     }
 
     constructor(
@@ -89,16 +85,6 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
     }
 
     /**
-     * @dev Function transfer tokens (when token is transferable)
-     * @param to The address to transfer to.
-     * @param amount The amount to be transferred.
-     * @return bool result of transfer (success or not)
-     */
-    function transfer(address to, uint256 amount) public transferable whenNotPaused returns (bool isSuccess) {
-        return super.transfer(to, amount);
-    }
-
-    /**
      * @dev Allows Owner to set the ODR address which will hold the remainder of the tokens on release
      * @param odrAddress The address of the ODR wallet
      */
@@ -109,36 +95,12 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
     }
 
     /**
-     * @dev Allows Owner to set the treasury smart contract address
-     * @param treasuryAddress The address which holds the treasury smart contract
+     * @dev Mint tokens: restricted only when token not released
+     * @param to The address that will receive the minted tokens.
+     * @param value The amount of tokens to mint.
+     * @return A boolean that indicates if the operation was successful.
      */
-    function setTreasury(address treasuryAddress) external onlyOwner returns (bool isSuccess) {
-        //Basic validation:
-        require(treasuryAddress != address(0), "Invalid treasury address");
-        require(TokenTreasury(treasuryAddress).isTokenTreasury() == true, "Contract address is not a valid treasury");
-        _treasuryAddress = treasuryAddress;
-        emit TreasuryReconfigured(_treasuryAddress);
-        return true;
-    }
-
-    /**
-     * @dev Gets the current address of the iOWN Treasury
-     * @return address The treasury address
-     */
-    function getTreasury() external view returns (address) {
-        return _treasuryAddress;
-    }
-
-    /**
-     * @dev Transfers an amount to TokenTreasury if implemented
-     * @param amount Token amount to treasure
-     * @param until timestamp of token release
-     */
-    function treasureTokens(uint256 amount, uint until) external whenNotPaused returns (bool isSuccess) {
-        require(_treasuryAddress != address(0), "Treasury is not ready yet");
-        emit TreasuredTokens(msg.sender, amount, until);
-        transfer(_treasuryAddress, amount);
-        TokenTreasury(_treasuryAddress).treasureTokens(msg.sender, amount, until);
-        return true;
+    function mint(address to, uint256 value) public whenNotReleased onlyMinter returns (bool) {
+        return super.mint(to, value);
     }
 }

@@ -1,5 +1,8 @@
 pragma solidity ^0.5.7;
 
+/**
+ * @dev Truffle standard migrations contract
+ */
 contract Migrations {
   address public owner;
 
