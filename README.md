@@ -90,7 +90,7 @@ As such its recommended to "flatten" the contracts using tuffle-flattner:
 truffle-flattener ./contracts/IownToken.sol > ./build/IownToken-flattended.sol
 ```
 
-Then you can use `./build/IownToken-flattended.sol` on [Remix](remix.ethereum.org) along with [MetaMask](https://metamask.io).
+Then you can use `./build/IownToken-flattended.sol` on [Remix](https://remix.ethereum.org) along with [MetaMask](https://metamask.io).
 The same flattended file can then be used on etherscan verification process.
 
 To generate constructor arguments (abi encoded), [HashEx](https://abi.hashex.org) can be used.
@@ -110,3 +110,4 @@ This project is licensed under the MIT License.
 ## Acknowledgments
 
 * Hat tip to anyone worked on OpenZeppelin, Ethereum and all frameworks and code used here
+Remix
