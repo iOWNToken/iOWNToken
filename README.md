@@ -6,7 +6,7 @@
 
 An ERC-20 Ethereum based token for iOWN project.
 
-[![Telegram icon](./assets/telegram-follow.png)](https://t.me/iOWNToken) | [![Twitter icon](./assets/twitter-follow.png)](https://twitter.com/iOWNToken)
+[![Telegram icon](./assets/telegram-follow.png)](https://t.me/iOWNToken)
 
 ## More information
 
