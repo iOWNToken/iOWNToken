@@ -24,7 +24,7 @@ contract TransfererRole is Ownable {
      * @dev Modifier for checking if the sender has transferer role
      */
     modifier transferer() {
-        require(isTransferer(msg.sender));
+        require(isTransferer(msg.sender), "Sender not allowed to transfer");
         _;
     }
 
