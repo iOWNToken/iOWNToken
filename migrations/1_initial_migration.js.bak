@@ -1,0 +1,8 @@
+const Migrations = artifacts.require("Migrations");
+
+// console.log('Truffle Migrations...');
+// console.log('===========================');
+
+module.exports = function(deployer) {
+    deployer.deploy(Migrations);
+};
