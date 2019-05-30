@@ -116,7 +116,7 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
      * @param to The address to transfer to.
      * @param value The amount to be transferred.
      * Added as resolution for audit on contract: 30/5/2019
-     * @see https://docs.google.com/document/d/1Feh5sP6oQL1-1NHi-X1dbgT3ch2WdhbXRevDN681Jv4/edit
+     * Reference here https://docs.google.com/document/d/1Feh5sP6oQL1-1NHi-X1dbgT3ch2WdhbXRevDN681Jv4/edit
      */
     function _transfer(address from, address to, uint256 value) internal {
         require(to != address(this), 'Invalid transfer to address');
