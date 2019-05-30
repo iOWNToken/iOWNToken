@@ -1,4 +1,4 @@
-pragma solidity ^0.5.7;
+pragma solidity 0.5.7;
 
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -33,8 +33,12 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
     /** Occurs when owner updates the address of the iOWN Treasury */
     event TreasuryReconfigured(address newTreasury);
 
+    /**
+     * @dev Modifier for checked whether the token has not been released yet
+     */
     modifier whenNotReleased() {
-        require(_released == false, "Token is already released");
+        require(_released == false, "Not allowed after token release");
+        _;
     }
 
     constructor(
@@ -65,7 +69,9 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
      */
     function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0), "Invalid new owner address");
-        require(tx.origin == msg.sender, "Can not set owner as a smart contract");
+        // Commented out for security constrains
+        //require(tx.origin == msg.sender, "Can not set owner as a smart contract"); 
+        // https://github.com/ethereum/solidity/issues/683
         //Give the newOwner address full control
         addMinter(newOwner);
         addPauser(newOwner);
@@ -102,5 +108,18 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
      */
     function mint(address to, uint256 value) public whenNotReleased onlyMinter returns (bool) {
         return super.mint(to, value);
+    }
+
+    /**
+     * @dev Transfer token for a specified addresses
+     * @param from The address to transfer from.
+     * @param to The address to transfer to.
+     * @param value The amount to be transferred.
+     * Added as resolution for audit on contract: 30/5/2019
+     * @see https://docs.google.com/document/d/1Feh5sP6oQL1-1NHi-X1dbgT3ch2WdhbXRevDN681Jv4/edit
+     */
+    function _transfer(address from, address to, uint256 value) internal {
+        require(_to != address(this), 'Invalid transfer to address');
+        super._transfer(from, to, value);
     }
 }
