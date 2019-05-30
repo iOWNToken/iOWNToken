@@ -119,7 +119,7 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
      * @see https://docs.google.com/document/d/1Feh5sP6oQL1-1NHi-X1dbgT3ch2WdhbXRevDN681Jv4/edit
      */
     function _transfer(address from, address to, uint256 value) internal {
-        require(_to != address(this), 'Invalid transfer to address');
+        require(to != address(this), 'Invalid transfer to address');
         super._transfer(from, to, value);
     }
 }
