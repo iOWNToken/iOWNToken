@@ -1,4 +1,4 @@
-pragma solidity ^0.5.7;
+pragma solidity 0.5.7;
 
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20Pausable.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
@@ -8,6 +8,7 @@ import "./UpgradeAgent.sol";
 /**
  * @title UpgradeableToken
  * @dev UpgradeableToken is A token which allows its holders to migrate their tokens to an future version
+ * This contract should be overridden in the future as more functionality is needed
  */
 contract UpgradeableToken is CappedBurnableToken, ERC20Pausable, Ownable  {
 
@@ -68,6 +69,7 @@ contract UpgradeableToken is CappedBurnableToken, ERC20Pausable, Ownable  {
         require(upgradeAgent.isUpgradeAgent() == true, "Address provided is an invalid agent");
         require(upgradeAgent.originalSupply() == cap(), "Upgrade agent should have the same supply");
         _upgradeAgent = agent;
+        _upgradeReady = true;
         emit UpgradeAgentSet(agent);
     }
 }
