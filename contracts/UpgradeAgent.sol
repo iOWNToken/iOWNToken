@@ -1,4 +1,4 @@
-pragma solidity ^0.5.7;
+pragma solidity 0.5.7;
 
 /**
  * @dev Upgrade agent interface inspired by Lunyr.

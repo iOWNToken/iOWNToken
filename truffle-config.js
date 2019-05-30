@@ -28,6 +28,9 @@ const infuraKey = fs.readFileSync(rpath + "infura.key").toString().trim();
 //const ganacheKey = fs.readFileSync(rpath + "ganache.key").toString().trim();
 
 module.exports = {
+
+  plugins: ["truffle-security"],
+
     /**
      * Networks define how you connect to your ethereum client and let you set the
      * defaults web3 uses to send transactions. If you don't specify one truffle
