@@ -1,4 +1,4 @@
-pragma solidity ^0.5.7;
+pragma solidity 0.5.7;
 
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
@@ -19,7 +19,7 @@ contract TokenTreasury is Ownable {
         Ownable()
         public
     {
-        require(tokenAddress != address(0), "Invalid token owner address provided");
+        require(owner != address(0), "Invalid token owner address provided");
         require(tokenAddress != address(0), "Invalid token address provided");
         _tokenAddress = tokenAddress;
         super._transferOwnership(owner);
