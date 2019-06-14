@@ -15,7 +15,6 @@ module.exports = function(deployer) {
     var supply = BigNumber(baseSupply * 10 ** 18);
     var d = new Date(0);
     d.setUTCSeconds(releaseDate);
-    // console.log('> Owner Address =', owner); //We shouldn't use multisig wallet for this
     console.log('> Deployment Name =', name);
     console.log('> Symbol =', symbol);
     console.log('> Total Supply =', supply.toString(10));

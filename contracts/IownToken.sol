@@ -4,15 +4,12 @@ import "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./UpgradeableToken.sol";
 import "./TokenTreasury.sol";
-import "./TransfererRole.sol";
 
 /**
  * @title IownToken
- * @dev IownToken is a Utility Token for iOWN,
- * the contract contains standard ERC20 Token functionality with some extra functionality specific to project
- * to serve as a way to participate in iOWN Platform services
+ * @dev iOWN Token is an ERC20 Token for iOWN Project, intended to allow users to access iOWN Services
  */
-contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
+contract IownToken is ERC20Detailed, UpgradeableToken {
     using SafeMath for uint256;
 
     /** The date before which release must be triggered or token MUST be upgraded. */
@@ -46,7 +43,8 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
         string memory symbol,
         uint totalSupply,
         uint8 decimals,
-        uint releaseDate
+        uint releaseDate,
+        address managingWallet
     )
         ERC20()
         ERC20Detailed(name, symbol, decimals)
@@ -57,10 +55,11 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
         ERC20Pausable()
         Ownable()
         UpgradeableToken()
-        TransfererRole()
         public
     {
+        require(managingWallet != address(0), "Managing wallet not set");
         _releaseDate = releaseDate;
+        transferOwnership(managingWallet);
     }
 
     /**
@@ -69,18 +68,14 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
      */
     function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0), "Invalid new owner address");
-        // Commented out for security constrains
-        //require(tx.origin == msg.sender, "Can not set owner as a smart contract"); 
-        // https://github.com/ethereum/solidity/issues/683
-        //Give the newOwner address full control
+         //Give the newOwner address full control
         addMinter(newOwner);
         addPauser(newOwner);
-        addTransferer(newOwner);
         super.transferOwnership(newOwner);
     }
 
     /**
-     * @dev Function to mark the token as released and allow transfers
+     * @dev Function to mark the token as released and disable minting
      */
     function releaseTokenTransfer() external onlyOwner returns (bool isSuccess) {
         require(_odrAddress != address(0), "ODR Address must be set before releasing token");
@@ -98,6 +93,22 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
         require(odrAddress != address(0), "Invalid ODR address");
         _odrAddress = odrAddress;
         return true;
+    }
+
+    /**
+     * @dev Getter for ODR address
+     * @return address of ODR
+     */
+    function odr() public view returns (address) {
+        return _odrAddress;
+    }
+
+    /**
+     * @dev Is token released yet
+     * @return true if released
+     */
+    function released() public view returns (bool) {
+        return _released;
     }
 
     /**
@@ -119,7 +130,7 @@ contract IownToken is ERC20Detailed, UpgradeableToken, TransfererRole {
      * Reference here https://docs.google.com/document/d/1Feh5sP6oQL1-1NHi-X1dbgT3ch2WdhbXRevDN681Jv4/edit
      */
     function _transfer(address from, address to, uint256 value) internal {
-        require(to != address(this), 'Invalid transfer to address');
+        require(to != address(this), "Invalid transfer to address");
         super._transfer(from, to, value);
     }
 }
