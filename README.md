@@ -4,7 +4,7 @@
 
 # iOWN Token
 
-An ERC-20 Ethereum based token for iOWN project.
+An ERC-223 Ethereum based token for iOWN project.
 
 [![Telegram icon](./assets/telegram-follow.png)](https://t.me/iOWNToken)
 
@@ -87,7 +87,7 @@ Smart contracts can be deployed via truffle, but verification process will be tr
 As such its recommended to "flatten" the contracts using tuffle-flattner:
 
 ```
-truffle-flattener ./contracts/IownToken.sol > ./build/IownToken-flattended.sol
+truffle-flattener ./contracts/iown/IownToken.sol > ./build/IownToken-flattended.sol
 ```
 
 Then you can use `./build/IownToken-flattended.sol` on [Remix](https://remix.ethereum.org) along with [MetaMask](https://metamask.io).
