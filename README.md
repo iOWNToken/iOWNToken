@@ -101,7 +101,7 @@ To generate constructor arguments (abi encoded), [HashEx](https://abi.hashex.org
 
 ## Contact Us
 
-You can also reach us here [info@iowngroup.com](mailto:info@iowngroup.com).
+You can also reach us here [info@iowntoken.com](mailto:info@iowntoken.com).
 
 ## License
 
