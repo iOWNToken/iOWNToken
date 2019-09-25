@@ -1,4 +1,4 @@
-pragma solidity 0.5.7;
+pragma solidity ^0.5.11;
 
 /**
  * @dev Upgrade agent interface inspired by Lunyr.
@@ -7,7 +7,7 @@ pragma solidity 0.5.7;
  * Upgrade agent itself can be the token contract, or just a middle man contract doing the heavy lifting.
  * Originally https://github.com/TokenMarketNet/smart-contracts/blob/master/contracts/UpgradeAgent.sol
  */
-contract UpgradeAgent {
+contract ERC223UpgradeAgent {
 
 	/** Original supply of token*/
     uint public originalSupply;
