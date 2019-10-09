@@ -15,6 +15,14 @@ More information about iOWN available here:
 * [Website](https://www.iowntoken.com) - iOWN Token official website.
 * [Whitepaper](https://www.iowntoken.com/whitepaper) - iOWN Token official whitepaper.
 
+## Ethereum Token Address
+
+iOWN Token is deployed on this address:
+* [ERC223](https://etherscan.io/token/0x555d051538c7a13712f1f590fa6b4c176ca4529f) - iOWN Token ERC223 Contract Address.
+
+Important: Original Smart contract (ERC20) was deployed here:
+* [ERC20](https://etherscan.io/token/0x870ff0b9214ee330674dd143bc1836f8b11a627a) - iOWN Token ERC20 (Inactive Cotnract).
+
 ## About iOWN
 
 iOWN is a Blockchain based crowdfunding platform concept coupled with a comprehensive ecosystem, 
