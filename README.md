@@ -4,7 +4,7 @@
 
 # iOWN Token
 
-An ERC-223 Ethereum based token for iOWN project.
+An ERC-20 Ethereum based token for iOWN project.
 
 [![Telegram icon](./assets/telegram-follow.png)](https://t.me/iOWNToken)
 
@@ -16,6 +16,8 @@ More information about iOWN available here:
 * [Whitepaper](https://www.iowntoken.com/whitepaper) - iOWN Token official whitepaper.
 
 ## Ethereum Token Address
+
+iOWN Token V3 is not yet deployed.
 
 iOWN Token is deployed on this address:
 * [ERC223](https://etherscan.io/token/0x555d051538c7a13712f1f590fa6b4c176ca4529f) - iOWN Token ERC223 Contract Address.
