@@ -1,6 +1,6 @@
 {
     "name": "iown-token",
-    "version": "1.2.0",
+    "version": "3.0.1",
     "description": "iOWN Token smart contract",
     "author": "Alexander Sayegh",
     "license": "MIT",
@@ -8,10 +8,11 @@
         "test": "test"
     },
     "dependencies": {
-        "bignumber.js": "^8.1.1",
-        "dotenv": "^7.0.0",
-        "openzeppelin-solidity": "^2.2.0",
-        "truffle-hdwallet-provider": "^1.0.6"
+        "@openzeppelin/contracts": "^4.4.2",
+        "@truffle/hdwallet-provider": "^2.0.0",
+        "bignumber.js": "^9.0.2",
+        "dotenv": "^12.0.4",
+        "openzeppelin-solidity": "^2.5.1"
     },
     "devDependencies": {}
 }

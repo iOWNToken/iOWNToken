@@ -1,0 +1,4 @@
+node_modules
+build/contracts/*
+*.bytecode
+package-lock.json

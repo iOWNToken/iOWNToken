@@ -1,0 +1,6 @@
+Ropsten mnemonic test:
+
+oak actor casino island net vocal spot assault horn inherit butter convince
+
+Address: 0xd68bd71Ee486835b4552229D8E3a76eb8172eD6A
+Private Key: 0x42f6cb0245a4cc08ff06a12272fbda8b4b088c2e52f1cca339f6c89853b442c8

@@ -1,29 +1,19 @@
-pragma solidity ^0.5.11;
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.4.22 <0.9.0;
 
-/**
- * @dev Truffle standard migrations contract
- */
 contract Migrations {
-    address public owner;
+  address public owner = msg.sender;
+  uint public last_completed_migration;
 
-    // A function with the signature `last_completed_migration()`, returning a uint, is required.
-    uint public last_completed_migration;
+  modifier restricted() {
+    require(
+      msg.sender == owner,
+      "This function is restricted to the contract's owner"
+    );
+    _;
+  }
 
-    modifier restricted() {
-        if (msg.sender == owner) _;
-    }
-
-    constructor() public {
-        owner = msg.sender;
-    }
-
-    // A function with the signature `setCompleted(uint)` is required.
-    function setCompleted(uint completed) external restricted {
-        last_completed_migration = completed;
-    }
-
-    function upgrade(address new_address) external restricted {
-        Migrations upgraded = Migrations(new_address);
-        upgraded.setCompleted(last_completed_migration);
-    }
+  function setCompleted(uint completed) public restricted {
+    last_completed_migration = completed;
+  }
 }
