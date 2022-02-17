@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts@4.4.2/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts@4.4.2/utils/Context.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/utils/Context.sol";
 //import "../../../utils/Context.sol";
 
 abstract contract ERC20BlackList is Context, ERC20 {
@@ -13,11 +13,6 @@ abstract contract ERC20BlackList is Context, ERC20 {
     event RemovedBlackList(address _user);
 
     mapping (address => bool) public isBlackListed;
-
-    modifier whenNotBlacklisted(address target) {
-        require(!isBlackListed[target], "ERC20: blacklisted address");
-        _;
-    }
 
     function getBlackListStatus(address _maker) public view returns (bool) {
         return isBlackListed[_maker];
