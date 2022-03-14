@@ -17,7 +17,7 @@ More information about iOWN available here:
 
 ## Ethereum Token Address
 
-iOWN Token V3 is not yet deployed.
+iOWN Token V3 is deployed on this address (not distributed yet).
 * [ERC20](https://bscscan.com/token/0x5d681b9839e237c4f1dc7d7486e6cb0a12b9654f) - iOWN Token ERC20 Contract Address (BNB/BSC Chain).
 
 iOWN Token is deployed on this address:
