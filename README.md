@@ -87,10 +87,6 @@ chmod 600 ~/.keys/infura.key
 
 Alternatively edit `truffle-config.js` to remove references for files
 
-### Testing
-
-(TODO) Add unit tests code to repo
-
 ## Deployment
 
 Smart contracts can be deployed via truffle, but verification process will be troublesome on [Etherscan](https://etherscan.io) because of multi-file contarcts (despite flattening)
