@@ -18,9 +18,10 @@ More information about iOWN available here:
 ## Ethereum Token Address
 
 iOWN Token V3 is not yet deployed.
+* [ERC20](https://bscscan.com/token/0x5d681b9839e237c4f1dc7d7486e6cb0a12b9654f) - iOWN Token ERC20 Contract Address (BNB/BSC Chain).
 
 iOWN Token is deployed on this address:
-* [ERC223](https://etherscan.io/token/0x555d051538c7a13712f1f590fa6b4c176ca4529f) - iOWN Token ERC223 Contract Address.
+* [ERC223](https://etherscan.io/token/0x555d051538c7a13712f1f590fa6b4c176ca4529f) - iOWN Token ERC223 Contract Address (To be deactivated).
 
 Important: Original Smart contract (ERC20) was deployed here:
 * [ERC20](https://etherscan.io/token/0x870ff0b9214ee330674dd143bc1836f8b11a627a) - iOWN Token ERC20 (Inactive Cotnract).
