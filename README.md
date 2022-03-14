@@ -109,6 +109,7 @@ To generate constructor arguments (abi encoded), [HashEx](https://abi.hashex.org
 ## Authors
 
 * **Alexander Sayegh** - *Initial work* - [LinkedIn](https://www.linkedin.com/in/alexandersayegh/)
+* **Mohammad Saleh** - *BNB Chain Upgrade* - [LinkedIn](https://www.linkedin.com/in/clrmas/) 
 
 ## Contact Us
 
